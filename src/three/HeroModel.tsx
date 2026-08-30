@@ -14,9 +14,9 @@ export function HeroModel() {
   })
 
   return (
-    <Float speed={1.4} rotationIntensity={0.6} floatIntensity={1.2}>
+    <Float speed={1.4} rotationIntensity={0.6} floatIntensity={1.2} position={[2.4, 1, -1]}>
       <mesh ref={mesh}>
-        <icosahedronGeometry args={[1.5, 4]} />
+        <icosahedronGeometry args={[1.15, 4]} />
         <MeshDistortMaterial
           color="#38bdf8"
           attach="material"

@@ -3,12 +3,23 @@ import { Scene } from './three/Scene'
 import { Nav } from './components/Nav'
 import { Hero } from './components/Hero'
 import { About } from './components/About'
+import { Qualifications } from './components/Qualifications'
 import { Skills } from './components/Skills'
 import { Experience } from './components/Experience'
+import { Products } from './components/Products'
 import { Projects } from './components/Projects'
 import { Contact } from './components/Contact'
 
-const sectionIds = ['hero', 'about', 'skills', 'experience', 'projects', 'contact']
+const sectionIds = [
+  'hero',
+  'about',
+  'qualifications',
+  'skills',
+  'experience',
+  'products',
+  'projects',
+  'contact',
+]
 
 function App() {
   const [activeSection, setActiveSection] = useState('hero')
@@ -40,8 +51,10 @@ function App() {
       <main className="relative z-10">
         <Hero />
         <About />
+        <Qualifications />
         <Skills />
         <Experience />
+        <Products />
         <Projects />
         <Contact />
       </main>

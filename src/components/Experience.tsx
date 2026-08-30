@@ -15,9 +15,11 @@ export function Experience() {
           <Reveal key={job.company + job.period} delay={0.1 * i}>
             <div className="relative">
               <span className="absolute -left-[calc(2rem+5px)] top-1.5 h-2.5 w-2.5 rounded-full bg-sky-400" />
-              <p className="text-xs font-semibold uppercase tracking-widest text-white/40">
-                {job.period}
-              </p>
+              {job.period && (
+                <p className="text-xs font-semibold uppercase tracking-widest text-white/40">
+                  {job.period}
+                </p>
+              )}
               <h3 className="mt-1 text-xl font-semibold text-white">{job.role}</h3>
               <p className="text-sm text-sky-300">{job.company}</p>
               <p className="mt-3 text-sm text-white/60">{job.summary}</p>

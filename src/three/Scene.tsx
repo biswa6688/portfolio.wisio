@@ -43,7 +43,7 @@ export function Scene({ activeSection }: { activeSection: string }) {
 
   return (
     <Canvas
-      className="!fixed inset-0 -z-10"
+      style={{ position: 'fixed', inset: 0, zIndex: 0 }}
       dpr={[1, 1.8]}
       camera={{ position: [0, 0, 8], fov: 50 }}
       gl={{ antialias: true, alpha: true }}

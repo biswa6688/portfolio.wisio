@@ -1,8 +1,10 @@
 const sections = [
   { id: 'hero', label: 'Home' },
   { id: 'about', label: 'About' },
+  { id: 'qualifications', label: 'Qualification' },
   { id: 'skills', label: 'Skills' },
   { id: 'experience', label: 'Experience' },
+  { id: 'products', label: 'Products' },
   { id: 'projects', label: 'Projects' },
   { id: 'contact', label: 'Contact' },
 ]
@@ -13,8 +15,8 @@ export function Nav({ activeSection }: { activeSection: string }) {
   }
 
   return (
-    <nav className="fixed left-1/2 top-4 z-50 -translate-x-1/2">
-      <ul className="flex gap-1 rounded-full border border-white/10 bg-black/40 px-2 py-1.5 backdrop-blur-md">
+    <nav className="fixed left-1/2 top-4 z-50 max-w-[95vw] -translate-x-1/2">
+      <ul className="flex gap-1 overflow-x-auto rounded-full border border-white/10 bg-black/40 px-2 py-1.5 backdrop-blur-md">
         {sections.map((section) => (
           <li key={section.id}>
             <button

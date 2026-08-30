@@ -29,24 +29,43 @@ and projects.
     while still delivering a genuinely interactive 3D experience (hover skill nodes, pointer
     parallax, auto-rotating orb).
 - **All content centralized in `src/data/profile.ts`.**
-  - *Why:* the user's real bio/projects/links are placeholders in several spots (experience
-    companies, project descriptions, LinkedIn URL) — keeping everything in one typed file makes
-    it a single edit point instead of hunting across components.
+  - *Why:* keeps personal data (bio, qualifications, experience, projects, products) a single
+    edit point instead of scattering copy across components.
 - **Repository workflow:** commit and push all valid changes to
   `https://github.com/biswa6688/portfolio.wisio.git` **before** starting each new feature, and
   update README/FEATURES/CHANGELOG/MEMORY alongside every feature change.
   - *Why:* explicit user instruction — keeps history bisectable and docs never drift from code.
+- **The fixed background `<Canvas>` must use `zIndex: 0` (or any non-negative value), never a
+  negative z-index, even though "put a fixed layer behind everything" is normally solved with
+  negative z-index.**
+  - *Why:* in this dev/test environment, a `zIndex: -10` fixed Three.js canvas rendered nothing
+    at all — draw calls fired every frame (confirmed via instrumentation) but the composited
+    output only ever showed the clear color. Isolated with a raw WebGL triangle (rendered fine at
+    z-index 0) and by toggling the canvas's z-index from -10 to 0 with zero other changes (fixed
+    it immediately). DOM content (`<main>`, `<nav>` in [src/App.tsx](src/App.tsx)) already stacks
+    above via `z-10`/`z-50`, so zIndex 0 on the canvas is sufficient and safe.
+  - *How to apply:* if the 3D layer ever goes invisible again, check z-index sign before anything
+    else in the Three.js pipeline — it's a cheap, easy-to-miss check.
+- Tailwind v4 moved the important-modifier from a **leading** `!` (v3: `!fixed`) to a **trailing**
+  `!` (v4: `fixed!`). A leading `!` silently does nothing (no error, class just doesn't apply) —
+  this caused the canvas positioning bug above. Prefer inline `style` for anything
+  positioning-critical rather than relying on the important-modifier syntax.
 
-## Known Placeholders (need real content from owner)
+## Content status
 
-- `experience` entries in `src/data/profile.ts` use "Your Company" / "Previous Company" — replace
-  with real employers, roles, and dates.
-- `projects` entries are generic placeholders — replace with 2-4 real shipped projects.
-- `profile.social.linkedin` is empty — add real LinkedIn URL.
+- `experience`, `qualifications`, `projects`, and `products` in `src/data/profile.ts` all hold
+  real data from the owner.
+- `profile.social.linkedin` is still empty — add real LinkedIn URL when available.
 - `profile.social.github` guesses `github.com/biswa6688` — confirm/correct.
+- The four `projects` entries (AmbujaExporters.in, TariniExporters.in, PaxBlue.in, Pramax.in)
+  have no `tech` tags since the actual stack used for those client sites isn't known — fill in
+  if known, otherwise leave empty.
 
 ## Environment Notes
 
 - Developed on Windows (win32), directory was not a git repo at project start — initialized
   fresh and pointed at the remote above.
 - Node/npm tooling used for all package management (no yarn/pnpm lockfile).
+- Verifying 3D/visual changes requires an actual rendered screenshot (headless Chromium via
+  Playwright, since no bundled screenshot tool exists here) — console-error-free and a passing
+  `npm run build` are NOT sufficient proof the 3D scene is visible.
