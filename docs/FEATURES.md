@@ -30,6 +30,8 @@ The brief requires images that match the app's color theme. Stock/raster photogr
 - 3D hero sphere: auto-rotates, ambient drift, animated signal pulses traveling along edges; respects theme color.
 - Scroll-triggered reveal animation on every section (Framer Motion `whileInView`, `once: true`).
 - Theme toggle: instant switch, no flash-of-wrong-theme on load (inline boot script in `index.html`).
+- **Scroll signal bar** (`ui/ScrollSignal.tsx`): a thin top progress bar (spring-smoothed) tracking scroll depth, plus a desktop-only side rail of section dots (via `IntersectionObserver`) that highlights the active section and jumps to any section on click.
+- **Command palette** (`ui/CommandPalette.tsx`): `⌘K` / `Ctrl+K` opens a searchable quick-jump menu to any section, plus a "toggle theme" command; arrow keys + Enter to navigate, Escape to close. A "Quick jump" trigger button lives in the nav on larger screens.
 - Responsive: mobile nav drawer, all grids collapse to single column below `sm`.
 - Accessibility: visible focus rings (`:focus-visible`), `aria-label`s on icon-only controls, `prefers-reduced-motion` honored globally.
 

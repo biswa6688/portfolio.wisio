@@ -1,5 +1,6 @@
 import { ThemeProvider } from "./context/ThemeContext";
 import { Nav } from "./components/Nav";
+import { ScrollSignal } from "./components/ui/ScrollSignal";
 import { Hero } from "./components/sections/Hero";
 import { About } from "./components/sections/About";
 import { Skills } from "./components/sections/Skills";
@@ -12,6 +13,7 @@ function App() {
   return (
     <ThemeProvider>
       <div className="min-h-screen bg-[var(--bg)]">
+        <ScrollSignal />
         <Nav />
         <main>
           <Hero />

@@ -1,6 +1,8 @@
 import { useEffect, useState } from "react";
 import { Menu, X } from "lucide-react";
 import { ThemeToggle } from "./ui/ThemeToggle";
+import { CommandPalette } from "./ui/CommandPalette";
+import { useTheme } from "../context/ThemeContext";
 
 const links = [
   { href: "#about", label: "About" },
@@ -14,6 +16,7 @@ const links = [
 export function Nav() {
   const [open, setOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
+  const { cycle } = useTheme();
 
   useEffect(() => {
     const onScroll = () => setScrolled(window.scrollY > 12);
@@ -40,6 +43,7 @@ export function Nav() {
           ))}
         </div>
         <div className="flex items-center gap-3">
+          <CommandPalette onCycleTheme={cycle} />
           <ThemeToggle />
           <button
             className="grid h-8 w-8 place-items-center rounded-full border border-line md:hidden"

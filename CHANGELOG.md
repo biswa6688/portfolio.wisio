@@ -2,6 +2,12 @@
 
 All notable changes to this project are documented here. Format loosely follows [Keep a Changelog](https://keepachangelog.com/).
 
+## [0.2.0] - 2026-08-30
+
+### Added
+- `ScrollSignal`: top-of-page scroll progress bar + desktop side-rail section navigator with active-section highlighting.
+- `CommandPalette`: `⌘K`/`Ctrl+K` searchable quick-jump menu with keyboard navigation, wired into the nav.
+
 ## [0.1.0] - 2026-08-30
 
 ### Added
