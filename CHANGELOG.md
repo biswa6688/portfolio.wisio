@@ -2,6 +2,12 @@
 
 All notable changes to this project are documented here. Format loosely follows [Keep a Changelog](https://keepachangelog.com/).
 
+## [Unreleased] - 2026-08-30
+
+### Added
+- GitHub Pages deployment via GitHub Actions (`.github/workflows/deploy.yml`): builds on push to `main`, deploys `dist/` to Pages.
+- `vite.config.ts`: set `base: '/portfolio.wisio/'` so built asset paths resolve correctly under the project Pages subpath.
+
 ## [0.2.0] - 2026-08-30
 
 ### Added
